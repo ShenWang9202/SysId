@@ -1,8 +1,8 @@
-function [A,B,C,D] = Ho_Kalman(G,T,T1,T2,n,m,p)
+function [A,B,C,D] = Ho_Kalman(G,T1,T2,n,m,p)
     % Ho-Kalman algorithm to find (A,B,C,D)
     % T = T1 + T2 + 1
     
-    % not work, June 08, 2020
+    % works, June 08, 2020
     
     % step 1: Hankel matrix
     H = zeros(p*T1,m*(T2+1));  % Hankel matrix
@@ -40,7 +40,5 @@ function [A,B,C,D] = Ho_Kalman(G,T,T1,T2,n,m,p)
     hQi  = hQ'*(hQ*hQ')^(-1);   % psedoinverse
     A = hOi*Hplu*hQi;
     
-    D = G(:,1:m);
-     
-    
+    D = G(:,1:m);  
 end
