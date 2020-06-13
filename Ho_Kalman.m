@@ -1,8 +1,7 @@
-function [A,B,C,D] = Ho_Kalman(G,T1,T2,n,m,p)
+function [A,B,C,D,sigma] = Ho_Kalman(G,T1,T2,n,m,p,flag)
     % Ho-Kalman algorithm to find (A,B,C,D)
     % T = T1 + T2 + 1
     
-    % works, June 08, 2020
     
     % step 1: Hankel matrix
     H = zeros(p*T1,m*(T2+1));  % Hankel matrix
@@ -18,10 +17,24 @@ function [A,B,C,D] = Ho_Kalman(G,T1,T2,n,m,p)
     % step 3: rank-n-approximation of hH
     [U,S,V] = svd(Hneg);
     hS = zeros(size(S));
-    for i = 1:n
-        hS(i,i) = S(i,i);
+    if flag == 0
+        for i = 1:n
+            hS(i,i) = S(i,i);
+        end
+        L = U*hS*V';
+    else
+        totalSig = sum(diag(S));
+        tmp = 0;
+        for i = 1:min(size(S))
+            hS(i,i) = S(i,i);
+            tmp = tmp + hS(i,i);
+            if tmp/totalSig > 0.9
+                n = i;   % system order
+                break;
+            end
+        end
+        L = U*hS*V';
     end
-    L = U*hS*V';
       
     % SVD decomposition
     [U,Sig,V] = svd(L);
@@ -36,9 +49,10 @@ function [A,B,C,D] = Ho_Kalman(G,T1,T2,n,m,p)
     B = hQ(:,1:m);
     
     Hplu = H(:,m+1:end);
-    hOi  = (hO'*hO)^(-1)*hO';
-    hQi  = hQ'*(hQ*hQ')^(-1);   % psedoinverse
-    A = hOi*Hplu*hQi;
+    A = pinv(hO)*Hplu*pinv(hQ);
+    %hOi  = (hO'*hO)^(-1)*hO';
+    %hQi  = hQ'*(hQ*hQ')^(-1);   % psedoinverse
+    %A = hOi*Hplu*hQi;
     
     D = G(:,1:m);  
 end
