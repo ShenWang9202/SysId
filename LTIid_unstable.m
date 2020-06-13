@@ -5,7 +5,7 @@ m = 2;
 p = 2;
 
 % unstable A; the first method is suitable for unstable systems as well
-A = randi(5,n,n); A = A./(0.8*max(abs(eig(A))));  
+A = randi(5,n,n); A = A./(0.2*max(abs(eig(A))));  
 B = randi([-2,2],n,m);
 C = randi([-2,2],p,n);
 D = randi([-2,2],p,m);
@@ -18,7 +18,7 @@ end
 
 
 sigu = 1;
-sigw = 0.1;
+sigw = 0;%0.1;
 sigv = 0.1;
 
 %% Method 1: multiple trajectory
