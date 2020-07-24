@@ -34,7 +34,7 @@ ylabel('$\|\hat{G} - G\|/\|G\|$','Interpreter','latex','FontSize',Fsize);
 %set(h,'FontSize',Fsize,'Interpreter','latex','box','off')
 
 % figure size
-set(gcf,'Position',[250 150 300 350]);
+set(gcf,'Position',[250 150 300 320]);
 print(gcf,'Fig2a','-painters','-dpng','-r600')
 
 
@@ -58,5 +58,5 @@ xlabel('Number of Samples $T\times N$','Interpreter','latex','FontSize',Fsize);
 ylabel('$\|\hat{G} - G\|/\|G\|$','Interpreter','latex','FontSize',Fsize);
 
 % figure size
-set(gcf,'Position',[250 150 300 350]);
+set(gcf,'Position',[250 150 300 320]);
 print(gcf,'Fig2b','-painters','-dpng','-r600')    
