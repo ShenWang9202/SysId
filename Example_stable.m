@@ -25,10 +25,8 @@ sigv = 0.1;
 
 %% Method 1: multiple trajectory
 % Generating data 
-N = 1000;  % number of experiments
+N = 500;  % number of experiments
 
-
-T = 200;
 
 Y = zeros(p,N*T);
 Z = zeros(m*T,N*T);

@@ -8,8 +8,7 @@
 
 clc;clear
 
-%% Example 1: Marginally stable system
-deltaT = 0.2;
+%% Example 2: unstable system
 n = 3;p = 1;m = 3;
 A = [1 0.01 0; 0.01 1 0.01; 0 0.01 1];
 B = eye(n);
