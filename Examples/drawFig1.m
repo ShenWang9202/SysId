@@ -1,9 +1,14 @@
-
-%% Draw figures
+% =================================================================
+%
+% Draw Fig. 1 in our paper
+% Y. Zheng, N. Li, Non-asymptotic  Identification  of  Partially  Observable  
+%                     Linear Time-invariant  Systems  using  Multiple  Trajectories
+%
+% =================================================================
 
 clc;close all;
 
-%% Figure 2a
+%% Figure 1a
 load data_marginally_stable
 
 Msize  = 6;
@@ -38,7 +43,7 @@ set(gcf,'Position',[250 150 300 320]);
 print(gcf,'Fig2a','-painters','-dpng','-r600')
 
 
-%% Figure 2b
+%% Figure 1b
 load data_unstable
  % line
 figure;

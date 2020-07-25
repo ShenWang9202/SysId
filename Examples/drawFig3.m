@@ -6,9 +6,6 @@
 %
 % =================================================================
 
-
-
-%% Time consumption
 clc;clear;close all
 
 Markersize = 6;

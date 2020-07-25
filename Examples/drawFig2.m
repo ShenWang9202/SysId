@@ -1,14 +1,11 @@
 % =================================================================
 %
-% Draw Fig. 3 in our paper
+% Draw Fig. 2 in our paper
 % Y. Zheng, N. Li, Non-asymptotic  Identification  of  Partially  Observable  
 %                     Linear Time-invariant  Systems  using  Multiple  Trajectories
 %
 % =================================================================
 
-
-
-%% Time consumption
 clc;clear;close all
 
 Markersize = 6;
