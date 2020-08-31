@@ -12,6 +12,7 @@ To run the scripts in this repository, you only need a working MATLAB installati
 * OLS using a single trajectory; Ref \[3\]
 * OLS + prefilter using a single trajectory; Ref \[4\]
 
+**References**
 
 1) Ho, Β. L., and Rudolf E. Kálmán. "Effective construction of linear state-variable models from input/output functions." at-*Automatisierungstechnik* 14.1-12 (1966): 545-548
 2) Sun, Y., Oymak, S., & Fazel, M. (2020, July). [Finite sample system identification: Optimal rates and the role of regularization](http://proceedings.mlr.press/v120/sun20a/sun20a.pdf). In Learning for Dynamics and Control (pp. 16-25). PMLR.
