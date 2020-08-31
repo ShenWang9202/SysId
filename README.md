@@ -1,4 +1,4 @@
-# Ordinary least-squares estimation for partially observed LTI systems
+# Ordinary least-squares (OLS) for estimating partially observed LTI systems
 
 This repository contains MATLAB scripts that implement the numerical examples in the following paper:
 
