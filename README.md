@@ -13,12 +13,9 @@ To run the scripts in this repository, you only need a working MATLAB installati
 * OLS + prefilter using a single trajectory; Ref \[4\]
 
 
-1) Ho, Β. L., and Rudolf E. Kálmán. "Effective construction of linear state-variable models from input/output functions." at-*Automatisierungstechnik* 14.1-12 (1966): 545-548.
-
+1) Ho, Β. L., and Rudolf E. Kálmán. "Effective construction of linear state-variable models from input/output functions." at-*Automatisierungstechnik* 14.1-12 (1966): 545-548
 2) Sun, Y., Oymak, S., & Fazel, M. (2020, July). [Finite sample system identification: Optimal rates and the role of regularization](http://proceedings.mlr.press/v120/sun20a/sun20a.pdf). In Learning for Dynamics and Control (pp. 16-25). PMLR.
-
 3) Oymak, S., & Ozay, N. (2019, July). [Non-asymptotic identification of lti systems from a single trajectory](https://arxiv.org/pdf/1806.05722.pdf). In 2019 American Control Conference (ACC) (pp. 5655-5661). IEEE.
-
 4) Simchowitz, M., Boczar, R., & Recht, B. (2019). [Learning linear dynamical systems with semi-parametric least squares](https://arxiv.org/pdf/1902.00768.pdf). arXiv preprint arXiv:1902.00768.
 
 
