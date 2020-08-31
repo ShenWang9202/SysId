@@ -6,11 +6,11 @@ This repository contains MATLAB scripts that implement the numerical examples in
 
 ## Instructions
 
-To run the scripts in this repository, you only need a working MATLAB installation. We implement four types of OLS and the celebrated Ho-Kalman algorithm Ref. \[1\]
- . OLS using mutliple independent trajectories, where all data points are utilized (our method)
- . OLS using multiple independent trajectories, where only the last data point of each trajectory is used; Ref \[2\]
- . OLS using a single trajectory; Ref \[3\]
- . OLS + prefilter using a single trajectory; Ref \[4\]
+To run the scripts in this repository, you only need a working MATLAB installation. We implement four types of OLS methods and the celebrated Ho-Kalman algorithm Ref. \[1\]
+* OLS using mutliple independent trajectories, where all data points are utilized (our method)
+* OLS using multiple independent trajectories, where only the last data point of each trajectory is used; Ref \[2\]
+* OLS using a single trajectory; Ref \[3\]
+* OLS + prefilter using a single trajectory; Ref \[4\]
 
 
 \[1\] Ho, Β. L., and Rudolf E. Kálmán. "Effective construction of linear state-variable models from input/output functions." at-*Automatisierungstechnik* 14.1-12 (1966): 545-548.
