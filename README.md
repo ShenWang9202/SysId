@@ -2,7 +2,7 @@
 
 This repository contains MATLAB scripts that implement the numerical examples in the following paper:
 
-1) Zheng, Y. and Li, N. (2020). [Non-asymptotic Identification of Linear Dynamical Systems Using Multiple Trajectories](https://zhengy09.github.io/papers/LTI_estimation.pdf), preprint.
+1) Zheng, Y. and Li, N. (2020). [Non-asymptotic Identification of Linear Dynamical Systems Using Multiple Trajectories](https://arxiv.org/abs/2009.00739), preprint.
 
 ## Instructions
 
