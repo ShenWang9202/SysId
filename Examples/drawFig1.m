@@ -1,10 +1,8 @@
-% =================================================================
-%
-% Draw Fig. 1 in our paper
-% Y. Zheng, N. Li, Non-asymptotic  Identification  of Linear Dynamical  Systems  
-%                                               using  Multiple  Trajectories
-%
-% =================================================================
+% ========================================================================
+% Draw Fig.1 in our paper
+% Y. Zheng, N. Li,Non-asymptotic Identification 
+%                 of Linear Dynamical Systems using Multiple Trajectories
+% ========================================================================
 
 clc;close all;
 

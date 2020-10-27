@@ -1,7 +1,7 @@
 % ==========================================================================
-% Unstable LTI systems for OLS estimators in the followingpaper
-% Y. Zheng, N. Li, Non-asymptotic Identification of Linear Dynamical Systems  
-%                                               using Multiple Trajectories
+% An open-loop unstable LTI system for OLS estimators in the following paper
+% Y. Zheng, N. Li,Non-asymptotic Identification 
+%                 of Linear Dynamical Systems using Multiple Trajectories
 % ==========================================================================
 
 clc;clear

@@ -1,7 +1,7 @@
 % ==========================================================================
-% Stable LTI systems for OLS estimators in the followingpaper
-% Y. Zheng, N. Li, Non-asymptotic Identification of Linear Dynamical Systems  
-%                                               using Multiple Trajectories
+% An open-loop stable LTI system for OLS estimators in the following paper
+% Y. Zheng, N. Li,Non-asymptotic Identification 
+%                 of Linear Dynamical Systems using Multiple Trajectories
 % ==========================================================================
 
 clear
@@ -23,6 +23,7 @@ for k = 1:T-1
     G = [G, C*A^(k-1)*B];
 end
 
+% noise level and input
 sigu = 1;
 sigw = 0.05;
 sigv = 0.1;
@@ -44,7 +45,6 @@ end
 
 hG1 = Y*pinv(Z);      % least squares solution
 
-
 % Estimation error
 fprintf('    The relative estimation error of G:  %6.3E \n',norm(hG1-G)./norm(G));
 
@@ -55,7 +55,7 @@ T1 = floor(T/2); T2 = T - T1 - 1;
 
 O  = obsv(A,C); 
 O1 = obsv(hA1,hC1);
-T  = (O'*O)^(-1)*O'*O1;
+T  = (O'*O)^(-1)*O'*O1;     % find a similarity transformation
 A1 = T*hA1*T^(-1); B1 = T*hB1; C1 = hC1*T^(-1);
 
 Error = [norm(A-A1)/norm(A),norm(B-B1)/norm(B),norm(C-C1)/norm(C),norm(D-hD1)/norm(D)];
