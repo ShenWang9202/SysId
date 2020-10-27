@@ -1,8 +1,8 @@
 % =================================================================
 %
 % Code for Example IV.A in our paper
-% Y. Zheng, N. Li, Non-asymptotic  Identification  of  Partially  Observable  
-%                     Linear Time-invariant  Systems  using  Multiple  Trajectories
+% Y. Zheng, N. Li, Non-asymptotic  Identification  of Linear Dynamical  Systems  
+%                                               using  Multiple  Trajectories
 %
 % =================================================================
 
@@ -93,5 +93,5 @@ for Idx = 1:length(Num)
 end
 
 %save data_marginally_stable
-% draw figure
+%draw figure
 %paperFig2
