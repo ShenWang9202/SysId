@@ -1,7 +1,14 @@
 function [A,B,C,D,sigma] = Ho_Kalman(G,T1,T2,n,m,p,flag)
-    % Ho-Kalman algorithm to find (A,B,C,D)
-    % T = T1 + T2 + 1
+% A naive implementation of the Ho-Kalman algorithm to find (A,B,C,D)
+% Input: 
+%     G: markov paramter
+% T1,T2: dimension of Hankel matrix  -- T = T1 + T2 + 1
+% n,m,p: system dimension
+% Output: State space realization A, B, C, D
     
+    if nargin <=6
+        flag = 0;  % a naive adaptation to choose system order.
+    end
     
     % step 1: Hankel matrix
     H = zeros(p*T1,m*(T2+1));  % Hankel matrix
