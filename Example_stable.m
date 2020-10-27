@@ -1,6 +1,13 @@
+% ==========================================================================
+% Unstable LTI systems for OLS estimators in the followingpaper
+% Y. Zheng, N. Li, Non-asymptotic Identification of Linear Dynamical Systems  
+%                                               using Multiple Trajectories
+% ==========================================================================
+
 clc;clear
-%% system data
-n = 4;
+
+% system data
+n = 3;
 m = 2;
 p = 2;
 
@@ -15,39 +22,39 @@ for k = 1:T-1
     G = [G, C*A^(k-1)*B];
 end
 
-%  T1 = floor(T/2); T2 = T - T1 - 1;
-%  [hA,hB,hC,hD] = Ho_Kalman(G,T1,T2,n,m,p);
+% T1 = floor(T/2); T2 = T - T1 - 1;
+% [hA,hB,hC,hD] = Ho_Kalman(G,T1,T2,n,m,p);
 
-
+% noise level, and input singal
 sigu = 1;
 sigw = 0.1;
 sigv = 0.1;
 
-%% Method 1: multiple trajectory
+
+fprintf('Estimating an open-loop stable system ... \n\n')
+
+% --------------------------------------------------------------------
+% Method 1: multiple trajectory
+% --------------------------------------------------------------------
+
 % Generating data 
-N = 500;  % number of experiments
-
-
+N = 500;       % number of experiments
 Y = zeros(p,N*T);
 Z = zeros(m*T,N*T);
-
-
-for i = 1:N
-    [yi,ui,Zi] = LTIsim(A,B,C,D,T,sigu,sigw,sigv);
-    
-    Y(:,(i-1)*T+1:i*T) = yi;
+for i = 1:N    % generating trajectories
+    [yi,ui,Zi]         = LTIsim(A,B,C,D,T,sigu,sigw,sigv);   
+    Y(:,(i-1)*T+1:i*T) = yi;   % prepare the data for regression
     Z(:,(i-1)*T+1:i*T) = Zi;
-    
 end
 
-% least squares solution
-hG1 = Y*pinv(Z);
+hG1 = Y*pinv(Z);      % least squares solution
 
-%% Method 2: Single Trajectory
+% -------------------------------------------------------------------- 
+% Method 2: Single Trajectory
+% --------------------------------------------------------------------
 if max(abs(eig(A))) <= 1
     Nbar    = N*T;
-    [y,u,~] = LTIsim(A,B,C,D,Nbar,sigu,sigw,sigv);
-
+    [y,u,~] = LTIsim(A,B,C,D,Nbar,sigu,sigw,sigv);  % generating data
     Y = y(:,T:end)';
     U = zeros(Nbar - T + 1,m*T);
     for i = 1:Nbar - T + 1
@@ -55,33 +62,28 @@ if max(abs(eig(A))) <= 1
         U(i,:) = ui(:)';
     end
     %Uinv = (U'*U)^(-1)*U';
-    hG2 = pinv(U)*Y;
+    hG2 = pinv(U)*Y;    % least-sqaure solutions
     hG2 = hG2';
 end
-%% Estimation error
-norm(hG1-G)./norm(G)
 
-
+% Estimation error
+Gerror = [norm(hG1-G)./norm(G),norm(hG2-G)./norm(G)];  % spectral norm
+fprintf('The relative estimation errors of G: \n');
+fprintf('            1) Mutiple trajectories: %6.3E\n',Gerror(1));
+fprintf('            2) Single trajectory   : %6.3E\n',Gerror(2));
 
 %% Ho-Kalman algorithm 
 T1 = floor(T/2); T2 = T - T1 - 1;
-flag = 1;  % adaptive choose system order
+flag = 0;       % a heuristic to choose system order or not
 [hA1,hB1,hC1,hD1] = Ho_Kalman(hG1,T1,T2,n,m,p,flag);
-%[hA2,hB2,hC2,hD2] = Ho_Kalman(hG2,T1,T2,n,m,p);
-
-ss0 = ss(A,B,C,D,[]);
-ss1 = ss(hA1,hB1,hC1,hD1,[]);
-
-minreal(ss0,1e-1)
-size(hA1)
-norm(ss0-ss1,'inf')./norm(ss0,'inf')
-
+[hA2,hB2,hC2,hD2] = Ho_Kalman(hG2,T1,T2,n,m,p);
 
 % Hinf check 
-% ss0 = ss(A,B,C,D,[]);
-% ss1 = ss(hA,hB,hC,hD,[]);
-% ss2 = ss(hA1,hB1,hC1,hD1,[]);
-% ss3 = ss(hA2,hB2,hC2,hD2,[]);
-% 
-% [norm(ss1 - ss0,'inf'),norm(ss2 - ss0,'inf'),norm(ss3 - ss0,'inf')]/norm(ss0,'inf')
-% 
+ss0 = ss(A,B,C,D,[]);
+ss2 = ss(hA1,hB1,hC1,hD1,[]);
+ss3 = ss(hA2,hB2,hC2,hD2,[]);
+Hinferror = [norm(ss2 - ss0,'inf'),norm(ss3 - ss0,'inf')]/norm(ss0,'inf'); 
+fprintf('The relative Hinf error after the Ho-Kalman algorithm: \n');
+fprintf('            1) Mutiple trajectories: %6.3E\n',Hinferror(1));
+fprintf('            2) Single trajectory   : %6.3E\n',Hinferror(2));
+
