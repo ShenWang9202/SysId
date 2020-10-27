@@ -32,6 +32,7 @@ sigv = 0.1;
 
 
 fprintf('Estimating an open-loop stable system ... \n\n')
+fprintf('    Spectral radius of open-loop system:%6.3f \n', max(abs(eig(A))));
 
 % --------------------------------------------------------------------
 % Method 1: multiple trajectory
@@ -68,7 +69,7 @@ end
 
 % Estimation error
 Gerror = [norm(hG1-G)./norm(G),norm(hG2-G)./norm(G)];  % spectral norm
-fprintf('The relative estimation errors of G: \n');
+fprintf('    The relative estimation errors of G: \n');
 fprintf('            1) Mutiple trajectories: %6.3E\n',Gerror(1));
 fprintf('            2) Single trajectory   : %6.3E\n',Gerror(2));
 
@@ -83,7 +84,7 @@ ss0 = ss(A,B,C,D,[]);
 ss2 = ss(hA1,hB1,hC1,hD1,[]);
 ss3 = ss(hA2,hB2,hC2,hD2,[]);
 Hinferror = [norm(ss2 - ss0,'inf'),norm(ss3 - ss0,'inf')]/norm(ss0,'inf'); 
-fprintf('The relative Hinf error after the Ho-Kalman algorithm: \n');
+fprintf('    The relative Hinf error after the Ho-Kalman algorithm: \n');
 fprintf('            1) Mutiple trajectories: %6.3E\n',Hinferror(1));
 fprintf('            2) Single trajectory   : %6.3E\n',Hinferror(2));
 
